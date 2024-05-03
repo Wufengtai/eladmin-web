@@ -60,16 +60,17 @@ function CRUD(options) {
     ...options,
     // 记录数据状态
     dataStatus: {},
+    mode: 'normal',
     status: {
       add: CRUD.STATUS.NORMAL,
       edit: CRUD.STATUS.NORMAL,
       // 添加或编辑状态
       get cu() {
-        if (this.add === CRUD.STATUS.NORMAL && this.edit === CRUD.STATUS.NORMAL) {
+        if (this.add === CRUD.STATUS.NORMAL && this.edit === CRUD.STATUS.NORMAL ) {
           return CRUD.STATUS.NORMAL
-        } else if (this.add === CRUD.STATUS.PREPARED || this.edit === CRUD.STATUS.PREPARED) {
+        } else if (this.add === CRUD.STATUS.PREPARED || this.edit === CRUD.STATUS.PREPARED ) {
           return CRUD.STATUS.PREPARED
-        } else if (this.add === CRUD.STATUS.PROCESSING || this.edit === CRUD.STATUS.PROCESSING) {
+        } else if (this.add === CRUD.STATUS.PROCESSING || this.edit === CRUD.STATUS.PROCESSING ) {
           return CRUD.STATUS.PROCESSING
         }
         throw new Error('wrong crud\'s cu status')
@@ -161,6 +162,7 @@ function CRUD(options) {
       crud.status.add = CRUD.STATUS.PREPARED
       callVmHook(crud, CRUD.HOOK.afterToAdd, crud.form)
       callVmHook(crud, CRUD.HOOK.afterToCU, crud.form)
+      crud.data.mode = 'normal'
     },
     /**
      * 启动编辑
@@ -175,6 +177,7 @@ function CRUD(options) {
       crud.getDataStatus(crud.getDataId(data)).edit = CRUD.STATUS.PREPARED
       callVmHook(crud, CRUD.HOOK.afterToEdit, crud.form)
       callVmHook(crud, CRUD.HOOK.afterToCU, crud.form)
+      crud.data.mode = 'normal'
     },
     /**
      * 启动删除
@@ -195,7 +198,7 @@ function CRUD(options) {
       callVmHook(crud, CRUD.HOOK.afterDeleteCancel, data)
     },
     /**
-     * 取消新增/编辑
+     * 取消新增/编辑/下单
      */
     cancelCU() {
       const addStatus = crud.status.add
@@ -226,7 +229,7 @@ function CRUD(options) {
       }
     },
     /**
-     * 提交新增/编辑
+     * 提交新增/编辑/下单
      */
     submitCU() {
       if (!callVmHook(crud, CRUD.HOOK.beforeValidateCU)) {

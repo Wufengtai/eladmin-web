@@ -1,6 +1,6 @@
 import { login, getInfo, logout } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
-
+import Cookies from 'js-cookie'
 const user = {
   state: {
     token: getToken(),
@@ -36,6 +36,7 @@ const user = {
           setUserInfo(res.user, commit)
           // 第一次加载菜单时用到， 具体见 src 目录下的 permission.js
           commit('SET_LOAD_MENUS', true)
+          Cookies.set('isAdmin', res.user.user.isAdmin)
           resolve()
         }).catch(error => {
           reject(error)

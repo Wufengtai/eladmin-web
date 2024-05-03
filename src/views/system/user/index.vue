@@ -83,6 +83,9 @@
             <el-form-item label="昵称" prop="nickName">
               <el-input v-model="form.nickName" @keydown.native="keydown($event)" />
             </el-form-item>
+            <el-form-item label="身份证号" prop="ic">
+              <el-input v-model="form.ic" />
+            </el-form-item>
             <el-form-item label="邮箱" prop="email">
               <el-input v-model="form.email" />
             </el-form-item>
@@ -156,6 +159,7 @@
           <el-table-column :selectable="checkboxT" type="selection" width="55" />
           <el-table-column :show-overflow-tooltip="true" prop="username" label="用户名" />
           <el-table-column :show-overflow-tooltip="true" prop="nickName" label="昵称" />
+          <el-table-column prop="ic" label="身份证号" />
           <el-table-column prop="gender" label="性别" />
           <el-table-column :show-overflow-tooltip="true" prop="phone" width="100" label="电话" />
           <el-table-column :show-overflow-tooltip="true" width="135" prop="email" label="邮箱" />
@@ -256,6 +260,9 @@ export default {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
+        ],
+        ic: [
+          { required: true, message: '请输入身份证号', trigger: 'blur' }
         ],
         nickName: [
           { required: true, message: '请输入用户昵称', trigger: 'blur' },
