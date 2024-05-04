@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-row :gutter="20">
       <!--侧边部门数据-->
-      <el-col :xs="9" :sm="6" :md="5" :lg="4" :xl="4">
+      <!-- <el-col :xs="9" :sm="6" :md="5" :lg="4" :xl="4">
         <div class="head-container">
           <el-input
             v-model="deptName"
@@ -22,7 +22,7 @@
           lazy
           @node-click="handleNodeClick"
         />
-      </el-col>
+      </el-col> -->
       <!--用户数据-->
       <el-col :xs="15" :sm="18" :md="19" :lg="20" :xl="20">
         <!--工具栏-->
@@ -89,7 +89,7 @@
             <el-form-item label="邮箱" prop="email">
               <el-input v-model="form.email" />
             </el-form-item>
-            <el-form-item label="部门" prop="dept.id">
+            <!-- <el-form-item label="部门" prop="dept.id">
               <treeselect
                 v-model="form.dept.id"
                 :options="depts"
@@ -97,7 +97,7 @@
                 style="width: 178px"
                 placeholder="选择部门"
               />
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item label="岗位" prop="jobs">
               <el-select
                 v-model="jobDatas"
@@ -163,11 +163,11 @@
           <el-table-column prop="gender" label="性别" />
           <el-table-column :show-overflow-tooltip="true" prop="phone" width="100" label="电话" />
           <el-table-column :show-overflow-tooltip="true" width="135" prop="email" label="邮箱" />
-          <el-table-column :show-overflow-tooltip="true" prop="dept" label="部门">
+          <!-- <el-table-column :show-overflow-tooltip="true" prop="dept" label="部门">
             <template slot-scope="scope">
               <div>{{ scope.row.dept.name }}</div>
             </template>
-          </el-table-column>
+          </el-table-column> -->
           <el-table-column label="状态" align="center" prop="enabled">
             <template slot-scope="scope">
               <el-switch

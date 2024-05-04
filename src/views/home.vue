@@ -1,7 +1,9 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-editor-container">
-      <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+
+      <!-- 统计组件（取消） -->
+      <!-- <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
         <line-chart :chart-data="lineChartData" />
       </el-row>
       <el-row :gutter="32">
@@ -20,7 +22,7 @@
             <bar-chart />
           </div>
         </el-col>
-      </el-row>
+      </el-row> -->
     </div>
   </div>
 </template>
@@ -70,8 +72,21 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .dashboard-editor-container {
+    background-image: url('~@/assets/images/background.jpeg');
+    /* 确保图片覆盖整个元素 */
+    background-size: cover;
+
+    /* 不重复背景图片 */
+    background-repeat: no-repeat;
+
+    /* 总是显示背景图片 */
+    background-attachment: fixed;
+
+    /* 确保元素填满整个容器 */
+    width: 100%;
+    height: 100vh;
+    /* 视口高度，或者你可以使用其他值如height: 100%; */
     padding: 32px;
-    background-color: rgb(240, 242, 245);
     position: relative;
 
     .github-corner {
